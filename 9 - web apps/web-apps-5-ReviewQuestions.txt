@@ -1,0 +1,15 @@
+1)  functions can be called.
+2)  undefined
+3)  a block is delimited by a pair of curly braces {} and is used to group zero or more statements.
+4)  scope means where your variable is accessible and modifiable in your program
+5)  If a variable is declared with let and const outside of a block (at the top-level of the <script> element) it has script scope. 
+6)  inside the function
+7)  inside the for loop
+8)  inside the if statement
+9)  inside the function containing the if statement
+10) global scope
+11) D.R.Y. - "Don't Repeat Yourself"
+12) let addThem() = fuction(num1 = 0, num2 = 0) => {return num1 + num2;}
+13) x = 2
+    y = 2
+    z = undefined

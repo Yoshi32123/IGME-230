@@ -1,0 +1,137 @@
+body{
+    background-image:
+        linear-gradient(to right, #297373, #85FFC7), /* gradient 1 as solid color */
+        linear-gradient(to right, #E6E6E6, #E6E6E6), /* gradient 2 as solid color */
+        linear-gradient(to right, #85FFC7, #297373); /* gradient 3 as solid color */
+    background-repeat: no-repeat; /* same as no-repeat, no-repeat, no-repeat */
+    background-position:
+        0 0, /* gradient 1 */
+        33% 0, /* gradient 2 */
+        100% 0; /* gradient 3 */
+    background-size:
+        33% 1000%,
+        51% 1000%,
+        33% 1000%;
+
+    color: #39393A;
+}
+
+header{
+    text-align: center;
+}
+
+header p{
+    width: 33%;
+    margin-left: 33%;
+    margin-right:-33%;
+}
+
+#submit{
+    text-align: center;
+    margin: 1em;
+}
+
+#search{
+    text-align: center;
+}
+
+#searchterm{
+    height:5em;
+    width: 33%;
+    font-size: 1.5em;
+    margin: 2em;
+}
+
+
+h1, h2{
+    font-family: Roboto;
+    color: #FF8552;
+    text-align: center;
+}
+
+h1{
+    font-size: 3em;
+}
+
+h2{
+    font-size: 2em;
+}
+
+
+p{
+    font-family:Roboto;
+}
+
+#results{
+    text-align: center;
+}
+
+#resultDiv{
+    width: 20%;
+    margin-left: 40%;
+    margin-right: -40%;
+}
+
+@media screen and (max-width: 1600px){
+    h1{
+        width: 33%;
+        margin-left: 33%;
+        margin-right: -33%;
+    }
+
+    #searchterm{
+        font-size: 1em;
+    }
+
+    #resultDiv{
+        width: 33%;
+        margin-left: 33%;
+        margin-right: -33%;
+        height:4em;
+    }
+}
+
+@media screen and (max-width: 920px){
+    body{
+        background: linear-gradient(#297373, #85FFC7, #297373)
+    }
+
+    h1{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px){
+    body{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    h1{
+        font-size: 1em;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    h2{
+        font-size: 1em;
+    }
+
+    #submit{
+        font-size: .5em;
+    }
+
+    #switch{
+        width: 33%;
+    }
+
+    p{
+        font-size: .75em;
+    }
+
+    #searchterm{
+        font-size: .75em;
+    }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <style>
+        button{
+            display: inline-block;
+            padding: 0.3em 1.2em;
+            margin: 0 0.1em 0.1em 0;
+            border: 0.3em solid rgba(255,255,255,0);
+            border-radius: 2em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family: 'Rubik-Regular',sans-serif;
+            font-weight: 300;
+            color:#FFFFFF;
+            text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+            text-align:center;
+            transition: all 0.2s;
+            background-color: #f1bb4e;
+            height: 3em;
+        }
+        button:hover{
+            border-color: #000000;
+        }
+        button:active{
+            background-color: #0975f1;
+        }
+        @media all and (max-width:30em){
+			button{
+				display: block;
+				margin: 0.2em auto;
+			}
+		}
+    </style>
+</head>
+<body>
+    <script>
+    // 1 - header
+    let newHeader = document.createElement("header");
+    newHeader.innerHTML = "Michael's Advice and Quotes";
+    newHeader.style.color = "white";
+	newHeader.style.fontWeight = "bold";
+	newHeader.style.fontSize = "2em";
+	newHeader.style.textTransform = "uppercase";
+	newHeader.style.textShadow = "3px 2px black";
+    newHeader.style.margin = "center";
+    document.querySelector("body").appendChild(newHeader);
+    
+
+    // 2 - background image
+    let body = document.querySelector("body");
+    body.style.backgroundImage = "url('michael-scott.jpg')";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundSize = "80%";
+
+    // 3 - name
+    let newFooter = document.createElement("footer");
+    newFooter.innerHTML = "Copyright &copy 2018, Kyler McQuillan";
+    body.appendChild(newFooter);
+
+    // 4 - page element holding advice/quote
+    let newPage = document.createElement("p");
+    //newPage.innerHTML = "random stuff";
+
+    // 5 - embedded font
+    body.style.fontFamily = 'Rubik-Regular';
+
+    // 6 - legibility and nice style
+    body.style.backgroundColor = "#8dbdd8";
+    body.style.textAlign = "center";
+    body.style.backgroundPosition = "center";
+    body.style.backgroundPositionY = "3em";
+    body.style.paddingTop = "5em";
+    body.style.color = "white";
+    body.style.marginLeft = "15%";
+    body.style.marginRight = "15%";
+
+    // --- PART 2 ---
+
+    // 1 - 5 different phrases
+    let quotes = ["You miss 100 percent of the shots you don't take. -Wayne Gretzky  -Michael Scott",
+    "Sometimes Ill start a sentence and I don't even know where its going. I just hope I find it along the way.",
+    "Im not superstitious, but I am a little stitious.",
+    "You know what the say. Fool me once, strike one, but fool me twice... strike three.",
+    "Thats what she said!"];
+
+    // 2 - when page loads, random from array shown
+    let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    newPage.innerHTML = randomQuote;
+    body.appendChild(newPage);
+    
+    // 3 - functionality is 50%
+    // okay
+
+    // --- Random Phases 2 ---
+
+    // setting up click function
+    let displayQuote = (e) => {
+        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        newPage.innerHTML = randomQuote;
+    }
+
+    // implementing button
+    let button = document.createElement("button");
+    button.innerHTML = "Shut up Micheal";
+    body.appendChild(button);
+    button.addEventListener("click", displayQuote);
+
+    </script>
+</body>
+    
+</html>

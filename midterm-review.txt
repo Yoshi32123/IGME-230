@@ -1,0 +1,286 @@
+what is commonly not inherited in css (intuition will tell you)
+margin vs padding. margin(padding)
+css box model
+rollover effects
+CRAP
+JS is about 10-15%
+    -able to write from memory
+    -truthy and falsy
+
+Look at discussion review for JS
+
+
+
+
+------- REVIEW -------
+
+A. HTTP PROTOCOL
+    1) Who sends request headers? server or client?
+        - client
+    2) Who sends response headers? server or client?
+        - server
+    3) Who sends status codes?
+        - server
+    4) What does the 403 status code mean?
+        - forbidden. server refuses to fulfill request.
+    5) What does the 404 status code mean?
+        - not found. nothing found matching the Request-URL
+    6) Why is the HOST request header required?
+        - if hosting multiple websites, need to know which one to go to
+    7) Who (client/server/both) can send text and/or images?
+        - both
+    8) Give two ways to verify that we have successfully "turned off" banjo's PageSpeed module
+        - view the page in the inspector to make sure it was not modded
+        - in the htaccess file, ModPagespeed should be set to off
+    9) How many .htaccess files can you have in a single folder?
+        - one
+    10) Suppose you upload a .htaccess file containing directives into your www folder. Which folder(s) would be affected by the file?
+        - all folders under it unless the child folders have a separate htaccess file
+    11) Also see HTTP protocol notes and questions here: http-protocol-intro.md
+    12) Also see HTTP demo notes here: http-protocol-demo.md
+    
+B. FTP   
+    1) Give the name (address) of the http://people.rit.edu web server (that you FTP files to)
+        - sftp://banjo.rit.edu
+    2) What are the numeric permissions that are required for web viewable directories
+        - 7 5 5   or 111 101 101
+    3) What are the numeric permissions that are required for web viewable files?
+        - 6 4 4   or 110 100 100
+
+C. PHP
+    1) See review questions for all 4 PHP chapters: https://github.com/tonethar/IGME-230-Master/blob/master/notes/php-0.md 
+    2) Special tag for php?
+        - <?PHP    ?>
+    3) PHP files are opened similarly to HTML
+    4) How do you print strings in PHP?
+        - echo "";
+    5) PHP function that tells the developer which version and modules are installed?
+        - phpinfo();
+    6) Give 2 ways to concatenate strings in php
+        - using a dot to connect them
+        - put everything in quotation marks ""
+    7) List 4 PHP scalar types
+        - integer, float, string, and boolean
+    8) T/F : PHP variables are not typed
+        - True
+        
+D. INTRO TO WEB        
+    1) Describe the 4 layers (or pillars) of web design.
+        - Content(text/images), Structure(html), Presentation(css), Behavior(javascript)
+    2) What language do we use to add structure to a web page?
+        - html
+    3) Which layer of web design is responsible for how web pages look?
+        - presentation; CSS
+    4)How can we add behavior to a web page?
+        - javascript
+        
+E. BASIC HTML
+    1) See the https://github.com/tonethar/IGME-230-GDD-2017-Fall/tree/master/IIM-Web-Review 
+    
+    2) Give examples of HTML semantic elements (tags)
+        - <cite>, <quot>, <ul>, <ol>, <em>
+        - Adds extra information without altering the structure of a document, and may be either inline or block elements
+        
+    3) Give examples of HTML5 Structural elements
+        - <header>, <main>, <nav>, <aside>, <figure>, <footer>
+        - Also called Content Sectioning Elements.
+   
+    4) Give examples of standalone (or empty) elements
+        - Do not have a closing tag within them
+        - <img>, <link>
+    
+    5) Give examples of container (or non-empty) elements
+        - Describe textual content contained within them
+        - <p>, <a>, <span>, <div>
+    
+    6) Give an example of an absolute file path
+        - Linking to other pages that are OUTSIDE of your banjo account.
+        - <a href="http://www.google.com">Go to Google</a>
+        - <img src="http://igm.rit.edu/designcraft/IGM_logo.png" alt="IGM Logo" />
+    
+    7) Give an example of a relative file path
+        - Linking to other pages and files associated WITHIN your banjo account
+        - <a href="personal-bio.html">Bio Page</a>
+        - <a href="proj/p1/proj1.html">P1</a>
+        - <a href="../../index.html">P1</a>
+    
+F. BASIC CSS
+    1) What does CSS stand for?
+        - Cascading Style Sheets
+        
+    2) Give an example of a CSS type selector.
+        - rules associated with HTML tags
+        - h2 {color: red;}
+        
+    3) Give an example of a CSS class selector.
+        - let you designate a style that can be used with multiple, unrelated elements
+        - .assignment {color: green;}
+        
+    4) Give an example of a CSS id selector.
+        - let you designate a single element on a page as the target of your style rule
+        - #footer {color: yellow;}
+        
+    5) Give an an example of a style rule that utilizes the CSS universal selector?
+        - * {margin: 0;}
+        
+    6) Give an example of a CSS descendant selector (aka descendant combinator)
+        - ul li {color: blue;}
+        - child: ul > li {color: grey;}
+        
+    7) What does display:block do?
+        - Stacks-up, top-over-bottom with other elements
+        - Displays an element as a block element (like <p>). It starts on a new line, and takes up the whole width
+        
+    8) What does display:inline do?
+        - Lines-up, side-by-side with other elements
+        - Displays an element as an inline element (like <span>). Any height and width properties will have no effect
+        
+    9) What does display:inline-block do?
+        - uses the "box model" and is only as wide as it needs to be
+        - Displays an element as an inline-level block container. The element itself is formatted as an inline element, but you can apply height and width values
+        
+    10) What does display:flex do?
+        - neighboring block elements line-up side-by-side with equal height
+        - Displays an element as a block-level flex container
+        
+    11) what does float:left do?
+        - The element floats to the left of its container
+        
+    12) Define inline, internal, and external style sheets.
+        - inline: the style is added as an attribute to an HTML element within the document
+        - internal/embedded: style rules are placed within a set of <style> tags in the <head> section of the document
+        - external: the style rules are listed in a separate document. the CSS document "connects" to the HTML document through a link tag in the <head> section.
+        
+    13) If these 3 types of styles conflict, which one usually "wins"?
+        - inline first, then embedded, then external
+        
+    14) Imagine we write a CSS rule that effects the color of elements in the <body> tag, which elements on the page will inherit the value of this property?
+        - every element inside body. Usually includes h, p, and/or ol tags
+        
+    15) Which CSS properties are commonly NOT inherited?
+        - borders, margins, padding
+        
+    16) How large is a CSS point unit?
+        - one point is about 1/72 of an inch
+        
+    17) How large is a CSS pixel unit?
+        - depends on the size of a pixel on the user's display. Could be 0.5" on mobile but will be 1" on desktop
+        
+    18) How large is an CSS em unit?
+        - the size of the current font. 2em means 2 times the size of the current font
+        
+    19) How large is an CSS ex unit?
+        - the lower-case x-height relative to that of the font
+        
+    20) Specify the CSS colors red, green, blue, black, and white in hexadecimal notation.
+        - red: #ff0000
+        - green: #00ff00
+        - blue: #0000ff
+        - black: #000000
+        - white: #ffffff
+        
+    21) Why is it a good idea to specify more than 1 font name in your CSS font rules?
+        - in case the user doesn't have a certain font.
+        - font-family: "Trebuchet MS", Arial;  uses the first font that the user has
+        
+    24) Describe the CSS box model.
+        - There is top, bottom, left, and right
+        - margin is the space between the edge of the screen and the box
+        - padding is the space between the edge of the box and where the text/images are located
+        - height/width is the box size after margining.
+        - border is the box edges between margin and padding
+        - the elements are what is stored inside the margin (text/images)
+        
+    25) Describe the difference between margin and padding.
+        - Margin is space that is "outside the box" and padding is space that is "inside the box"
+        
+    26) Give at least 3 properties of the "box" that we can set (other than margin and padding).
+        - border, width, height
+        
+    27) What is the HTML tag used to connect to an external CSS file or an embedded font?
+        - <link href="file location" rel="stylesheet" type="text/css">
+        
+    28) What is the CSS property we use to define whether/how quickly a property will animate when changed?
+        - transition: 5s;
+        - transition:width 2s ease-in 1s, background-color 1s;
+        
+    29) Be familiar with the box model and advanced CSS selectors shown here: https://github.com/tonethar/IGME-230-Fall-2018/blob/master/weekly/week-03B-notes.md
+    
+G. CSS ROLLOVERS
+    1) Give the 4 CSS pseudo selectors that are used to create CSS rollover effects.
+        - a:link{}, a:visited{}, a:active{}, a:hover{}
+
+H. MARKDOWN
+    1) Know the basic Markdown syntax (headings, lists, etc)
+    
+I. WEB PUBLISHING
+    1) When to use serif, sans-serif, and decorative fonts
+        - serif: easier in print, website is harder
+        - sans-serif: easier in website, hard in print
+        - decorative font: looks good, titles
+        
+    2) What image file format(s) should generally be used for photographs?
+        - jpg
+        
+    3) What image file format(s) should generally be used for web graphics such as logos and banners?
+        - png
+        
+    4) What are the 2 questions every navigation system should answer?
+        - Where am I?
+        - Where can I go from here?
+        
+    5) What does CRAP stand for?
+        - Contrast, Repetition, Alignment, and Proximity
+        
+    6) Give a short summary of each CRAP principle
+        - Contrast: text vs background color, links vs regular text, menus vs content.
+        - Repetition: repeat certain design elements within your design. ie: colors, typefaces, images, positions
+        - Alignment: line on-screen items up to create visual flow. avoid center aligned text.
+        - Proximity: Things that are close to each other seem to be related. group related together, separate unrelated. Spacing
+        
+    7) What does the "above the fold" design principle mean?
+        - Keep the main idea of your site, and the primary navigation system, in a smaller box located above "the fold"
+        
+    8) Define Responsive Design
+        - design that responds to the user's display, and adapts to provide an optimized viewing/browsing experience
+        
+    9) What is the name of the <meta> tag you will need to add to all of your responsive (and mobile friendly) web pages?
+        - viewport
+        - <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        
+    10) What properties of the browser does a media query commonly "test" for?
+        - different widths, scale
+        
+    
+J. WEBSITE DESIGN PROCESS
+    1) See Week 5 & 6 notes
+    
+K. INTRODUCTION TO WEB APPLICATIONS
+    1) Intro to to web apps
+    2) Intro to JavaScript
+    3) Intro to Web Browser DOM
+    4) More Web Broser DOM Methods
+    5) JavaScript Functions
+    
+L. SAMPLE SHORT ANSWER
+    1) Write JavaScript that loops through the foods array and produces the HTML necessary for an unordered list containing the array’s contents.
+        -carrots
+        -broccoli
+        -tofu
+        
+        - let foods = ["","",""];
+        -   etc
+    2) Write a CSS style rule that makes all hypertext links gray in color, with a left margin equal to 2 ems, and a font size of 15 pixels.
+        - a:link {
+            color: gray;
+            margin-left: 2em;
+            font-size: 15px;
+        }
+    
+    3) List the 4 "CRAP" design principles and a rule of thumb for each.
+        - see I5 and I6
+    
+    4) Write a complete PHP program that will print out the string "Hello World".
+        - <?PHP
+            echo "Hello World";
+            ?>

@@ -1,0 +1,64 @@
+body{
+    background-color: #8dbdd8;
+}
+
+#content
+{
+    border: 5px solid #4390bc;
+    padding: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #d8e9f3;
+}
+
+h1{
+    text-decoration: underline;
+    text-align: center;
+}
+
+ul#navList
+{
+    padding-top: 15px;
+    text-align: center;
+    margin: auto;
+    padding-right: 35px;
+}
+
+ul#navList li
+{
+    background-color: #b2d3e6;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+ul#navList li:hover
+{
+    background-color: #68a7ca;
+}
+
+ul#navList li a
+{
+    color: #4390bc;
+}
+
+ul#navList #current
+{
+    background-color: white;
+}
+
+h4.subtitle
+{
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: #68a7ca;
+    color: black;
+}
+
+.proposalItem
+{
+    border: 2px solid #b2d3e6;
+    margin: 0.5px;
+}

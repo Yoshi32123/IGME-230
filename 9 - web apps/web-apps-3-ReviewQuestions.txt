@@ -1,0 +1,17 @@
+1)  Document Object Model.
+2)  Defines methods and properties to access and maniputlate the contents and style of a web page.
+3)  Create, Read, Update, Delete
+4)  It tries to change something that hasn't been created yet and gives a null error.
+5)  document.querySelector()
+6)  document.querySelectorAll()
+7)  .innerHTML = "";
+8)  .style = "";
+9)  document.querySelector("h1").style.backgroundPosition = "top";
+10) for loop using an indices of the array, and a for loop using elements in a list.
+11) Through view source, you won't see any changes that JavaScript made. In Web Inspector, all changes are reflected under the elements tab.  
+    The Web Inspector provides a live view of the current page.
+12) It will return [] which is an empty array/NodeList.
+13) In Web Inspector, go to sources, go to the line of code, right click the number on the left, and add conditional breakpoint.
+    Then enter condition in hte dialogue and press enter to activate the breakpoint.
+14) It acts as a breakpoint by pausing the program where it is placed.
+15) 0, -0, false , null, NaN/undefined, "", '', new boolean(false)

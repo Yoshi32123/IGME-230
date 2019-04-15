@@ -1,0 +1,20 @@
+HTML:
+    - links to font, css, jquery, and javascript in the head
+    - title and instructions listed
+    - a button that allows user to switch between derivation and integration
+    - a textbox where the user can put in their function
+    - a results box that displays the answer after calculation (start off with a [results] string)
+
+CSS:
+    - When the width is 920px or wider, there is colored gradient bars on the side of the page. When it is below, there is a linear repeating gradient of the colors
+    - The h1 resizes multiple times to appear pleasant for viewing in the resolution
+    - The buttons get bigger as the resolution gets smaller to become more apparent
+
+javascript:
+    - sets up base cases that work upon window load
+    - fun1: runs data through API using a bool to check conditions to return answer
+    - fun2: empties text box upon click
+    - fun3: switches the bool and certain element properties to integrate instead of derivate
+    - derive function: sets up url variable to contain the right line to pass into the API
+    - integrate function: sets up url variable to contain the right line to pass into the API
+    - sets up the results box to display AFTER clicking submit and will be contain a "results" id tag to control css.

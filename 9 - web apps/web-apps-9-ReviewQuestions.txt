@@ -1,0 +1,14 @@
+1) All students are sharing the same set of keys, so if someone uses highscores as a key, another student's highscores key could wipe out and replace their data. One workaround is to add a unique prefix.
+2) Local storage: 
+    - web page can be viewed simplicitly for greater storage capacity
+    - The data is sent back to the server for every HTTP request
+Session storage:
+    - Changes are available per window
+    - Data is only available inside window/door in which it was set
+3) No it will not be visible. The local storage for different browsers is different.
+
+4) The process of translating data structures or object state into a format that can be stored or transmitted.
+5) Saves an array to localStorage
+6) Retrieves an array from localStorage
+7)  - random phrases could have saved the current text-line instead of changing upon reload.
+    - web-apps 6 could have saved the current color layout and button that were pressed

@@ -1,0 +1,2 @@
+ErrorDocument 404 /kjm7088/230/error.html
+ModPagespeed off

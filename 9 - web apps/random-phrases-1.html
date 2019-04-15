@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+    // 1 - header
+    let newHeader = document.createElement("header");
+    newHeader.innerHTML = "Michael's Advice and Quotes";
+    newHeader.style.color = "white";
+	newHeader.style.fontWeight = "bold";
+	newHeader.style.fontSize = "2em";
+	newHeader.style.textTransform = "uppercase";
+	newHeader.style.textShadow = "3px 2px black";
+    newHeader.style.margin = "center";
+    document.querySelector("body").appendChild(newHeader);
+    
+
+    // 2 - background image
+    let body = document.querySelector("body");
+    body.style.backgroundImage = "url('michael-scott.jpg')";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundSize = "80%";
+
+    // 3 - name
+    let newFooter = document.createElement("footer");
+    newFooter.innerHTML = "Copyright &copy 2018, Kyler McQuillan";
+    body.appendChild(newFooter);
+
+    // 4 - page element holding advice/quote
+    let newPage = document.createElement("p");
+    //newPage.innerHTML = "random stuff";
+    
+
+    // 5 - embedded font
+    body.style.fontFamily = "";
+
+    // 6 - legibility and nice style
+    body.style.backgroundColor = "#8dbdd8";
+    body.style.textAlign = "center";
+    body.style.backgroundPosition = "center";
+    body.style.backgroundPositionY = "3em";
+    body.style.paddingTop = "5em";
+    body.style.color = "white";
+    body.style.marginLeft = "15%";
+    body.style.marginRight = "15%";
+
+    // 7 - mobile friendly? (optional)
+    // check
+
+    // 8 - The look and theme is 50% of grade
+    // okay
+
+    // --- PART 2 ---
+
+    // 1 - 5 different phrases
+    let quotes = ["You miss 100 percent of the shots you don't take. -Wayne Gretzky  -Michael Scott",
+    "Sometimes Ill start a sentence and I don't even know where its going. I just hope I find it along the way.",
+    "Im not superstitious, but I am a little stitious.",
+    "You know what the say. Fool me once, strike one, but fool me twice... strike three.",
+    "Thats what she said!"];
+
+    // 2 - when page loads, random from array shown
+    let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    newPage.innerHTML = randomQuote;
+    body.appendChild(newPage);
+    
+    // 3 - functionality is 50%
+    // okay
+
+    </script>
+</body>

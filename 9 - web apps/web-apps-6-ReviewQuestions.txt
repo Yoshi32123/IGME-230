@@ -1,0 +1,6 @@
+1)  - You can have multiple event functions attached to it while handlers can only have one
+    - They can be removed using removeEventListener()
+2)  When you want to use an 'onclick' function
+3)  Functions
+4)  - They have a shorter syntax than regular functions
+    - They do not bind their own "this" keyword

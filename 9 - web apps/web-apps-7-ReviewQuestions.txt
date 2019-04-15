@@ -1,0 +1,14 @@
+1)  a notation for representing a fixed value in source code
+2)  Using a for...in loop:
+    for (let key in object)
+        {'key=${key}';}
+3)  - A for...in loop is for looping through enumerable properties of an object.
+    - A for...of loop is for looping through iterable collections.
+4)  boolean, number, string (, null, and undefined)
+5)  Array, Function, and object
+6)  seals an object, preventing new properties from being added to it and making all existing properties as non-configurable
+7)  freezes an object, not allowing it to be changed. Prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerablility,       or writability of existing properties, and prevents the values of existing properties from being changed.
+8)  inside the function it should be this.x and this.y.
+9)  x = "2", y = "1"
+10) x = [1,2,3,4,5], y = [1,2,3,4,5]. They both point at the same array.
+11) x = {name: "fred"}, while y and z break the code since they are const variables.

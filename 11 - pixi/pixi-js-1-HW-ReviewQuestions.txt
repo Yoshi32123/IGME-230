@@ -1,0 +1,7 @@
+1)  CDN = "Content Distribution Network". Don't have to download the library yourself.
+2)  CORS (Cross-Origin Resource Sharing). Run the code off of a web server.
+3)  - Upload code to banjo
+    - Use a program that creates a local web server to run the code on. ie: brackets or visual studio code
+4)  -white: 0xFFFFFF
+    -black:0x000000
+    -green:0x00FF00

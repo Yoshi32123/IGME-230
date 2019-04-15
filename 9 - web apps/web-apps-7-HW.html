@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-7-HW</title>
+	<style>
+		body{border:1px solid gray;}
+	</style>
+</head>
+<body>
+<h1>My Favorites</h1>
+<h2>My Favorite Colors</h1>
+
+<ol id="colorsList">
+	
+</ol>
+
+<h2>My Favorite Foods</h1>
+
+<ol id="foodsList">
+	
+</ol>
+
+<h2>My Favorite Links</h1>
+
+<ol id="linksList">
+	
+</ol>
+
+<script>
+"use strict";
+let colors = ["red","green","blue","purple","orange"];
+let foods = ["pretzels","breadsticks","peanut butter","chocolate"];
+
+// Optional - can you figure out how to pull both the key AND the value
+// from the `links` object literal?
+let links = {
+		"RIT": "http://www.rit.edu",
+		"RWAG" : "https://www.facebook.com/RWAGclub",
+		"New Media Club" : "http://newmediaclub.cias.rit.edu"
+	}
+
+// --- REVIEW ---
+
+// colors list appending using for loop
+let olTags = document.querySelectorAll("ol");
+for (let i = 0; i < colors.length; i++)
+{
+    let newli = document.createElement("li");
+    newli.innerHTML = colors[i];
+    olTags[0].appendChild(newli);
+}
+
+// foods list appending using for...of loop
+for (let food of foods)
+{
+    let newli = document.createElement("li");
+    newli.innerHTML = food;
+    olTags[1].appendChild(newli);
+}
+
+// web apps 7 stuff
+for (let key in links){
+    let newli = document.createElement("li");
+    newli.innerHTML = "<a href = " + links[key] + ">" + key + "</a>";
+    olTags[2].appendChild(newli);
+}
+
+</script>
+</body>
+</html>

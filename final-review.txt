@@ -1,0 +1,563 @@
+I. Topics covered since midterm
+
+I-A. Intro to Web Apps
+Most of this is new: https://github.com/tonethar/IGME-230-GDD-2017-Fall/blob/master/notes/web-apps-0.md
+
+All of the content above is fair game. Be sure to look over the review questions and assignments for chapters 1-10
+
+I-B. Intro to PixiJS
+https://github.com/tonethar/IGME-230-GDD-2017-Fall/blob/master/notes/pixi-js-0.md
+
+Major topics:
+
+Factoids about PixiJS
+-
+ES6 classes, constructors, inheritance, this
+-
+CORS
+- bypass: use live server, or python, or something that can run its own server
+Sprite Hierarchy
+-
+
+I-C. Weekly Notes
+Week 8+ in weekly covers the newer material.
+
+
+Hints: 
+- crud, json, cdn, DOM
+- .htaccess files: all true
+- jpeg, gif, png work on web. gif has animation, jpeg/png good for photos, png can have alpha channel, gif can have transparency
+- php not strongly typed
+- add image tags
+- crap = context,repetition,alignmennt,proximity
+- write css/js that makes something
+- mouse hover = a:hover
+- html for ordered list
+- headers sent by web server vs client
+- 2 Qs: where am i, where can i go?
+- <?PHP   ?>
+- hex color = #rrggbb
+- JavaScript adding two numbers
+- html relative links
+- class vs id: . vs #
+- layers of web design: content, structure, presentation, behavior
+- css units
+- css inside the box: padding
+- css outside the box: margin
+- selecting descendant
+- css property for animation
+- loop through array
+- not in body if using window.onload
+- embed stylesheet/js
+
+
+
+II. Concepts that may be tested
+
+CSS Selectors
+Be able to write CSS rules using these selectors:
+
+universal,type,class,id
+- *{} ,a{}, .{}, #{}
+descendant
+- use a space: ul li{}
+attribute
+- a[title]{}, a[href="https://example.org"]{}
+selectors for button states
+- a:hover{}, a:link{}, a:visited{}
+
+
+
+
+The DOM & DOM Methods
+
+which DOM method have we been using to get a reference to a single element on a web page?
+- document.querySelector("");
+
+which DOM method have we been using to get references to multiple elements on a web page?
+- document.querySelectorAll("");
+
+how do you set and get the attribute values of DOM elements?
+- Element.setAttribute(name, value);
+- ex) b.setAttribute("name","helloButton");
+
+which method is used to add elements to the DOM tree?
+- document.querySelector("body").appendChild(ul);
+
+which method is used to remove elements from the DOM tree?
+- element.remove();
+
+
+
+
+Variables & Types
+is JavaScript a dynamically typed or statically typed language?
+- dynamically
+
+What is the major difference between these types of languages?
+- dynamically: can change at run time.
+- statically: worries more about handling variable types.
+
+what does "use strict" do?
+- It catches some common coding bloopers, throwing exceptions.
+- It prevents, or throws errors, when relatively "unsafe" actions are taken (such as gaining access to the global object).
+- It disables features that are confusing or poorly thought out.
+
+how do you create a block in JavaScript?
+- <script>
+- //JavaScript code
+- </script>
+
+define what variable scope is.
+- local: variables declared in a function only exist in that function
+- global: variables declared outside a function exist everywhere
+
+how are variables scoped when declared with let and const?
+- block scope: can only declare a variable once inside that scope
+
+how are variables scoped when declared with var?
+- function scope: only available inside the function they're created in.
+
+in regards to let and const declared variables, what is a "temporal dead zone" and how is it caused?
+- trying to use a variable outside of a function before it is declared.
+
+are function declarations hoisted in JavaScript?
+- yes, can be used before they are declared.
+
+are function expressions hoisted in JavaScript?
+- no, therefore cannot use them before defining the function. Expression is using => {}
+
+give examples of JS reference types and JS value types.
+- reference types: an object, array, or function. let o = {};
+- value types: number, symbol, boolean, null, and undefined. Also, string
+
+how does the behavior of const vary when dealing with (primitive) value types, as opposed to reference types?
+- a const with a primitive value type will lock it and not allow it to be changed.
+- a const with a reference type will lock it from direct modification, but functions and keys can still be used unless Object.freeze() is used.
+
+what is a falsy value?
+- a statement that is not clearly stated as false
+
+list JavaScript's 7 falsy values.
+- false, 0, '', "", null, undefined, NaN
+
+truthy values
+- '0', 'false', [], {}, function(){} <- empty function
+
+
+Functions
+write a function named addThem that takes two arguments and returns their sum. 
+Be sure you can write this both as a standard function, and as an ES6 arrow function.
+-function addThem(num1 = 0,num2 = 0){
+-    return (num1 + num2);
+-}
+-
+- ES6 arrow
+
+write a function (arrow or standard) named addThem2 that takes two arguments and returns their sum. 
+If either parameter is not passed in, they will have default values of 0.
+- see above^
+
+write a function that takes another function as an argument, and then calls that passed in function.
+- function taker(another){
+-      another();
+-}
+
+
+
+Arrays
+give 3 ways to loop through an array
+- for loop (using index and length)
+- foreach loop (by element)
+- for..in loop
+
+how are JS typed arrays different from the standard JS Array
+- typed arrays have self-descriptive names. ie. int8, Uint32
+
+
+
+Events
+compare and contrast event handlers and event listeners
+- An event handler is the function. Each of this functions can be attached to elements using event listeners. 
+- Listeners can store their own funciton as well
+
+why will this line of code - window.onload=init(); - fail? (assume that the init() function is correctly defined elsewhere)
+- it will run the function immediately, not when its done loading
+
+why will this line of code - window.addEventListener("onload",init); - fail? (assume that the init() function is correctly defined elsewhere)
+- 
+
+
+
+
+Classes & Objects
+
+create an object literal with at least 2 properties, and at least one method that acts upon those properties
+- let newThing = {
+-    name: "thing",
+-    age: 0,
+-    getOlder: function(){
+-       this.age = this.age + 1;
+-    }
+-}
+
+create an ES6 class with at least 2 properties, and at least one method that acts upon those properties
+-see below. similar to c#.
+- class classname{
+  constructor(){
+    stuff
+  }
+
+  method1(){
+    stuff
+  }
+}
+
+what is the keyword used when a JS class inherits from another JS class?
+- extends
+
+which Object static method is used to prevent an object from having new properties added to it?
+- Object.seal()
+
+which Object static method is used to prevents an object from having new properties added to it, 
+and also prevents the values of those properties from changing?
+- object = Object.freeze(object);
+
+which JS methods are used to serialize and deserialize objects?
+- serialize: function.toString();
+- deserialize: actual = new function('return ' + other.toString())()
+
+
+
+
+Web Services (these are in the notes, and in Wikipedia)
+
+define Ajax
+- Asynchronous JavaScript And XML
+define web service
+- provides an object-oriented web-based interface to a database server
+define API Key
+- identifies the calling program, its developer, or its user to the web site. prevents malicious use
+define Query String
+- part of a URL that assigns values to specified parameters
+
+
+Acronym Soup
+What do the following stand for?
+
+HTML, CSS, FTP, HTTP, DOM
+- HTML: hypertext markup language
+- CSS: cascading style sheets
+- FTP: file transfer protocol
+- HTTP: hypertext transfer protocol
+- DOM: document object model
+Ecma (trick question)
+- JavaScript
+CRUD
+- Create, Read, Update, Delete : can do them on a database
+DRY
+- dont repeat yourself
+JSON
+- JavaScript Object Notation
+CDN
+- Content Delivery/Distribution Network
+
+
+Other Concepts
+
+Separation of Concern
+- a design principle for separating a computer program into distinct sections
+
+Method Chaining
+- Method chaining is a common syntax for invoking multiple method calls in object-oriented programming languages.
+- ie. .filter.trim
+
+Fluent Interfaces
+- a fluent interface is a method for designing object oriented APIs based extensively on 
+- method chaining with the goal of making the readability of the source code close to that of ordinary written prose
+
+Subclass Sandbox
+- circle blast 4
+
+Rendering Engine
+- A rendering engine (also known as layout engine) is a software behind the Web browser to display web pages
+
+Display List
+- A display list (or display file) is a series of graphics commands that define an output image. 
+
+
+
+III. Sample Questions (not exhaustive of what could be asked)
+
+
+A: CSS/HTML
+
+1-Write a CSS rule that will select an element that has an id value of "content", and give it a background color of green.
+1) #content{background-color: green;}
+
+2-Write a CSS rule that will select all elements of class "important", and give them a font size color of 16 points.
+2) .important{font-size: 16pt;}
+
+3-Write a CSS rule that will select only those links on the page that have an href value equal to http://www.google.com
+3) a[href="http://www.google.com"]{}
+
+4-Write a CSS rule that will select only those links on the page that have an href value that contains the text google
+4) a[href="google"]{}
+
+5-Write a CSS rule that will select all <b> elements that are descendants of <p> elements
+5) p b{}
+
+6-Write a CSS rule that will select all <b> elements that are children of <p> elements
+6) p>b{}
+
+7-Write a CSS rule that causes a link to turn green when the mouse is pressed down over it
+7) a:hover {color: green;}
+
+8-Write a CSS rule that selects <h1>, <h2> and <h3> tags and gives them a color of red
+8) h1,h2,h3{color: red;}
+
+9-Write a CSS rule that selects all of the elements on a page and gives them a font size of 10 pixels
+9) *{font-size: 10px;}
+
+10-Re-write this HTML so that the <p> element below belongs to both the hoser and takeoff classes: <p><i>Strange Brew</i> is my favorite movie!</p>
+10) <p class="hoser takeoff"><i>Strange Brew</i> is my favorite movie!</p>
+
+
+
+
+
+B: JavaScript and DOM
+
+1) Write JS that selects all of the <img> tags on a HTML page and stores them in an array, loops through the array, and gives each a title atttribute with the value of "I am an image"!"
+newArray = document.querySelectorAll("img");
+for (let i = 0; i < newArray.length; i++){
+    newArray[i].title = "I am an image!";
+}
+
+2) Write JS that loops through the colors array, and creates an unordered list of the contents of the array. When you are done creating the array, don't forget to add it to the page. let colors = ["red","green","blue"]; 
+ul = document.createElement("ul");
+for (let i = 0; i < colors.length; i++){
+    let newLi = document.createElement("li");
+    newLi.innerHTML = colors[i];
+    ul.appendChild(newLi);
+}
+document.querySelector("body").appendChild(ul);
+
+
+
+
+C - JS Objects
+
+1) Create an ES6 class called Person. Its constructor will take two arguments name and height, and assign those passed in values as properties of the Person object. Person will have a grow() method that causes that instance's height to increase by 1.
+class Person{
+    constructor(name="",height=0){
+        this.name = name;
+        this.height = height;
+    }
+    
+    grow(){
+        this.height = this.height+1;
+    }
+}
+
+2) Create a JS object literal named rover that has 2 properties breed and age. The object will also have a method named getOlder() which will increase age by 1.
+let rover = {
+    breed: '',
+    age: 0,
+    getOlder: function(){
+        this.age = this.age + 1;
+    }
+}
+
+3 - What is the output of this statement? Will it produce an error message?
+"use strict";
+let car = {"cylinders":4};
+console.log(car.color);
+3a) undefined
+
+4 - What is the output of this statement? Will it produce an error message?
+"use strict";
+let car = {"cylinders":4};
+car.color = "red";
+console.log(car.color);
+4a) red
+
+5 - What is the output of this statement? Will it produce an error message?
+"use strict";
+let car = {"cylinders":4};
+Object.seal(car);
+car.color = "red";
+console.log(car.color);
+5a) error message
+
+6 - What is the output of this statement? Will it produce an error message?
+"use strict";
+let car = {"cylinders":4};
+Object.freeze(car);
+car.cylinders = 8;
+console.log(car.cylinders);
+6a) error msg: read-only property
+
+
+D: Truthy/Falsy Values
+1 - What will be logged for this line of code? Why?
+if(""){
+  console.log("Guns!");
+}else{
+  console.log("Butter!");
+}
+1a) Butter! an empty string is falsy
+
+2 - What will be logged for this line of code? Why?
+if("false"){
+  console.log("Guns!");
+}else{
+  console.log("Butter!");
+}
+2a) Guns! a string of "false" is truthy
+
+3 - What will be logged for this line of code? Why?
+if([]){
+  console.log("Guns!");
+}else{
+  console.log("Butter!");
+}
+3a) Guns! an empty array is truthy
+
+4 - What will be logged for this line of code? Why?
+if([].length){
+  console.log("Guns!");
+}else{
+  console.log("Butter!");
+}
+4a) Butter! .length of an empty array will be undefined, which is falsy
+
+5 - What will be logged for this line of code? Why?
+if([null,undefined,true,false][0]){
+  console.log("Guns!");
+}else{
+  console.log("Butter!");
+}
+5a) Butter! using [0] will give a value of null, which is falsy.
+
+
+
+
+E: Variable Scope
+
+1 - What will be logged below? Why?
+let x = 0;
+x++;
+console.log(x);
+y++;
+let y = 0;
+console.log(y);
+1a) 1, error (y undefined)
+
+2 - What will be logged below? Why?
+let x = 1;
+let y;
+if(x==1){
+	x++;
+	let y = 1;
+	y++;
+	let z = 1;
+ }
+ console.log(x);
+ console.log(y);
+ console.log(z);
+2a) 2, y=undefined, z not defined
+
+3 - What will be logged below? Why?
+doStuff()
+console.log(x);
+
+function doStuff(){
+	console.log("doStuff!");
+	x = 1;
+}
+3a) doStuff!, 1
+
+4 - What will be logged below? Why?
+"use strict";
+doStuff()
+console.log(x);
+
+function doStuff(){
+	console.log("doStuff!");
+	x = 1;
+}
+4a) doStuff!, error: x is not defined 
+
+5 - What will be logged below? Why?
+doStuff()
+console.log(x);
+
+function doStuff(){
+	console.log("doStuff!");
+	var x = 1;
+}
+5a) doStuff!, error: x is not defined
+
+6 - What will be logged below? Why?
+doStuff()
+
+function doStuff(){
+  if(true){
+    if(!false){
+      for(let i=0;i<10;i++){
+	var x = 1;
+        let y = 2;
+        const z = 3;
+      }
+    }
+  }
+   console.log(x);
+   console.log(y);
+   console.log(z);
+}
+6a) 1, error: y is not defined
+
+
+
+
+F: Value Types vs. Referece Types
+
+1 - What will be logged below? Why?
+  let x = "1";
+  let y = x;
+  x = "2";
+  console.log(x);
+  console.log(y);
+1a) 2, 1. local variables are stored separately. value type.
+
+2 - What will be logged below? Why?
+  let x = [1,2,3];
+  let y = x;
+  x.push(4);
+  y.push(5);
+  console.log(x);
+  console.log(y);
+2a) [1,2,3,4,5] since an array variables are pointers to the same thing if equal. reference type
+
+
+
+G: Variable Immutability
+
+1 - What will be logged below? Why?
+const x = {};
+x.name = "fred";
+console.log(x);
+1a) {name: "fred"}
+
+2 - What will be logged below? Why?
+const y = 1;
+y++;
+console.log(y);
+2a) error: cant assign to a constant variable.
+
+3 - What will be logged below? Why?
+const z = {};
+z = {"name":"mary"};
+console.log(z);
+3a) error: cant assign to a constant variable.

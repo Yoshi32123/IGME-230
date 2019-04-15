@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Blok</title>
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="Blok-helper-files/Blok.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="gridContainer"></div>
+<h1>Blok!</h1>
+<h2>Bloks used:</h2>
+<h3>Instructions:</h3>
+<div id="instructions">
+    <p>Get as many Bloks placed on the board as possible!</p>
+    <p>Click a box below to select a blok to place,</p>
+    <p>Move the blok on the main grin using the arrow keys,</p>
+    <p>Place the blok by using enter.</p>
+    <p>If an entire row or column is filled, it will clear.</p>
+    <p>_____</p>
+    <p>If you cannot place any more bloks, the game is over and you must refresh the page to reset.</p>
+</div>
+<div id="blockChooser1"></div>
+<div id="blockChooser2"></div>
+<div id="blockChooser3"></div>
+
+
+<script>
+// setting up main grid
+const numCols = 9;
+const numRows = 9;
+const cellWidth = 20;
+const cellSpacing = 1;
+let blocksUsed = 0;
+document.querySelector('h2').innerHTML += blocksUsed;
+
+// initialiting fields
+const container = document.querySelector('#gridContainer');
+const chooser1 = document.querySelector('#blockChooser1');
+const chooser2 = document.querySelector('#blockChooser2');
+const chooser3 = document.querySelector('#blockChooser3');
+const span = document.createElement('span');
+span.className = 'cell';
+const cells = [];
+const MAX_Z_INDEX = 1000;
+let selectedElement = null;
+let selectedChooser = 0;
+let selectedChoice = 0;
+let cellsPlaceholder = [];
+let thereIsBlue = false;
+let redUnder = false;
+
+// screen bounding variables
+let point = [5,3];
+let MAX_ROW_INDEX = 8;
+let MAX_COL_INDEX = 8;
+let MIN_ROW_INDEX = 0;
+let MIN_COL_INDEX = 0;
+let onBorderRight = false;
+let onBorderLeft = false;
+let onBorderTop = false;
+let onBorderBottom = false;
+
+// setting base grid layout
+for(let row = 0; row < numRows; row++){
+    cells.push([]);
+    for (let col = 0; col < numCols; col++){
+        let cell = span.cloneNode();
+        cell.style.left = `${col * (cellWidth + cellSpacing)}px`;
+        cell.style.top = `${row * (cellWidth + cellSpacing)}px`;
+        container.appendChild(cell);
+        cells[row][col] = cell;
+    }
+}
+// setting placeholder grid
+function resetPlaceholder(e){
+    for(let row = 0; row < numRows; row++){
+        cellsPlaceholder.push([]);
+        for (let col = 0; col < numCols; col++){
+            let cell = span.cloneNode();
+            cell.style.left = `${col * (cellWidth + cellSpacing)}px`;
+            cell.style.top = `${row * (cellWidth + cellSpacing)}px`;
+            cellsPlaceholder[row][col] = cell;
+        }
+    }
+}
+
+
+// array for choosers
+let cells1 = [];
+let cells2 = [];
+let cells3 = [];
+
+// making choices for chooser
+const L = [];       // 3,3 // left and bottom wall
+const invL = [];    // 3,3 // right and top wall
+const single = [];  // 1,1 // center 1
+const horiz = [];   // 1,3 // center horizontal 3
+const vert = [];    // 3,1 // center vertical 3
+const zig = [];     // 3,2 // odd block
+const zag = [];     // 2,3 // opposite of zig
+const square = [];  // 2,2 // block
+
+// function to fill empty grids up
+function emptyGrid(e){
+    for(let row = 0; row < 3; row++){
+    e.push([]);
+    for(let col = 0; col < 3; col++){
+        let cell = span.cloneNode();
+        cell.style.left = `${col * (cellWidth + cellSpacing)}px`;
+        cell.style.top = `${row * (cellWidth + cellSpacing)}px`;
+        e[row][col] = cell;
+    }
+}
+}
+
+// function to fill empty grids up and append to a chooser
+function emptyGrid(e, chooser){
+    for(let row = 0; row < 3; row++){
+    e.push([]);
+    for(let col = 0; col < 3; col++){
+        let cell = span.cloneNode();
+        cell.style.left = `${col * (cellWidth + cellSpacing)}px`;
+        cell.style.top = `${row * (cellWidth + cellSpacing)}px`;
+        e[row][col] = cell;
+    }
+}
+}
+
+// filling empty cell blocks
+emptyGrid(cells1, chooser1);
+emptyGrid(cells2, chooser2);
+emptyGrid(cells3, chooser3);
+resetPlaceholder(cellsPlaceholder);
+
+// calling function on every choice
+emptyGrid(L);
+emptyGrid(invL);
+emptyGrid(single);
+emptyGrid(horiz);
+emptyGrid(vert);
+emptyGrid(zig);
+emptyGrid(zag);
+emptyGrid(square);
+
+// Filling each choice with content
+L[0][0].className = 'cellFilled';
+L[1][0].className = 'cellFilled';
+L[2][0].className = 'cellFilled';
+L[2][1].className = 'cellFilled';
+L[2][2].className = 'cellFilled';
+invL[0][0].className = 'cellFilled';
+invL[0][1].className = 'cellFilled';
+invL[0][2].className = 'cellFilled';
+invL[1][2].className = 'cellFilled';
+invL[2][2].className = 'cellFilled';
+single[2][0].className = 'cellFilled';
+horiz[2][0].className = 'cellFilled';
+horiz[2][1].className = 'cellFilled';
+horiz[2][2].className = 'cellFilled';
+vert[0][0].className = 'cellFilled';
+vert[1][0].className = 'cellFilled';
+vert[2][0].className = 'cellFilled';
+zig[2][1].className = 'cellFilled';
+zig[1][0].className = 'cellFilled';
+zig[1][1].className = 'cellFilled';
+zig[0][0].className = 'cellFilled';
+zag[2][0].className = 'cellFilled';
+zag[2][1].className = 'cellFilled';
+zag[1][1].className = 'cellFilled';
+zag[1][2].className = 'cellFilled';
+square[2][0].className = 'cellFilled';
+square[1][0].className = 'cellFilled';
+square[1][1].className = 'cellFilled';
+square[2][1].className = 'cellFilled';
+
+// adding all choices to list
+let randChoices = [L, invL, single, horiz, vert, zig, zag, square];
+
+// choosing random choices for the 3 choosers
+let random1 = Math.floor(Math.random() * 8);
+let random2 = Math.floor(Math.random() * 8);
+let random3 = Math.floor(Math.random() * 8);
+fillChooser(chooser1, cells1, randChoices[random1]);
+fillChooser(chooser2, cells2, randChoices[random2]);
+fillChooser(chooser3, cells3, randChoices[random3]);
+
+// functions for filling 3 choosers
+function fillChooser(chooser, grid, randChoice){
+    for(let row = 0; row < 3; row++){
+    grid.push([]);
+    for(let col = 0; col < 3; col++){
+        let cell = span.cloneNode();
+        cell.style.left = `${col * (cellWidth + cellSpacing)}px`;
+        cell.style.top = `${row * (cellWidth + cellSpacing)}px`;
+        if (randChoice[row][col].className == 'cellFilled'){
+            cell.className = 'cellFilled';
+        }
+        chooser.appendChild(cell);
+        grid[row][col] = cell;
+    }
+}
+}
+
+// choice function for "selecting" the current block
+let selector = function(e){
+    e.preventDefault();
+
+    // gets the div that the selected cell was in
+    selectedElement = e.target.parentElement;
+    onBorderRight = false;
+    onBorderLeft = false;
+    onBorderTop = false;
+    onBorderBottom = false;
+
+    point = [5,3];
+
+    // loops through the main grid and sets the currently selected div (or previosly now) back to default
+    for (let i = 0; i < 9; i++){
+        for (let j = 0; j < 9; j++){
+            if (cells[i][j].className == "cellFilledAndSelected"){
+                cells[i][j].className = "cellFilled";
+            }
+            else if (cells[i][j].className == "cellSelected"){
+                cells[i][j].className = "cell";
+            }
+        }
+    }
+
+    // loops through each element in the currently clicked div
+    for (let i = 0; i < 3; i++){
+        for (let j = 0; j < 3; j++){
+            // chooser 1 was clicked
+            if (selectedElement == chooser1){
+                // sets the current chooser variable for later
+                selectedChooser = 1;
+                thereIsBlue = true;
+
+                // puts the chosen block into game view
+                if (cells1[i][j].className == "cellFilled"){
+                    cells1[i][j].style.backgroundColor = "blue";
+                    if (cells[3+i][3+j].className == "cellFilled"){
+                        cells[3+i][3+j].className = "cellFilledAndSelected";
+                    }
+                    else{
+                        cells[3+i][3+j].className = "cellSelected";
+                    }
+                }
+
+                // sets others back to red
+                if (cells2[i][j].className == "cellFilled"){
+                    cells2[i][j].style.backgroundColor = "red";
+                }
+                if (cells3[i][j].className == "cellFilled"){
+                    cells3[i][j].style.backgroundColor = "red";
+                }
+            }
+            // chooser 2 was clicked
+            else if (selectedElement == chooser2){
+                // sets the current chooser variable for later
+                selectedChooser = 2;
+                thereIsBlue = true;
+
+                // puts the chosen block into game view
+                if (cells2[i][j].className == "cellFilled"){
+                    cells2[i][j].style.backgroundColor = "blue";
+                    if (cells[3+i][3+j].className == "cellFilled"){
+                        cells[3+i][3+j].className = "cellFilledAndSelected";
+                    }
+                    else{
+                        cells[3+i][3+j].className = "cellSelected";
+                    }
+                }
+
+                // sets others back to red
+                if (cells1[i][j].className == "cellFilled"){
+                    cells1[i][j].style.backgroundColor = "red";
+                }
+                if (cells3[i][j].className == "cellFilled"){
+                    cells3[i][j].style.backgroundColor = "red";
+                }
+            }
+            // chooser 3 was clicked
+            else if (selectedElement == chooser3){
+                // sets the current chooser variable for later
+                selectedChooser = 3;
+                thereIsBlue = true;
+
+                // puts the chosen block into game view
+                if (cells3[i][j].className == "cellFilled"){
+                    cells3[i][j].style.backgroundColor = "blue";
+                    if (cells[3+i][3+j].className == "cellFilled"){
+                        cells[3+i][3+j].className = "cellFilledAndSelected";
+                    }
+                    else{
+                        cells[3+i][3+j].className = "cellSelected";
+                    }
+                }
+
+                // sets others back to red
+                if (cells1[i][j].className == "cellFilled"){
+                    cells1[i][j].style.backgroundColor = "red";
+                }
+                if (cells2[i][j].className == "cellFilled"){
+                    cells2[i][j].style.backgroundColor = "red";
+                }
+            }
+        }
+    }
+};
+
+// linking up event to choosers
+chooser1.onmousedown = selector;
+chooser2.onmousedown = selector;
+chooser3.onmousedown = selector;
+
+// moving around the currently selected block
+window.addEventListener("keydown", function (event){
+    if(event.defaultPrevented){
+        return; // in case event was already processed
+    }
+    
+    // finds the indexed choice to test
+    if (selectedChooser == 1){
+        selectedChoice = random1;
+    }
+    else if (selectedChooser == 2){
+        selectedChoice = random2;
+    }
+    else if(selectedChooser == 3){
+        selectedChoice = random3;
+    }
+
+    // setting max row value
+    if (selectedChoice == 0 || selectedChoice == 1 || selectedChoice == 4 || selectedChoice == 5){
+        MIN_ROW_INDEX = 2;
+    }
+    else if (selectedChoice == 6 || selectedChoice == 7){
+        MIN_ROW_INDEX = 1;
+    }
+    else{
+        MIN_ROW_INDEX = 0;
+    }
+    // setting max col value
+    if (selectedChoice == 0 || selectedChoice == 1 || selectedChoice == 3 || selectedChoice == 6){
+        MAX_COL_INDEX = 6;
+    }
+    else if (selectedChoice == 5 || selectedChoice == 7){
+        MAX_COL_INDEX = 7;
+    }
+    else{
+        MAX_COL_INDEX = 8;
+    }
+
+    // check where & what the block is to set safe distances
+    for (let i = 0; i < cells.length; i++){
+        for (let j = 0; j < cells.length; j++){
+            if (point[0] <= MIN_ROW_INDEX){
+                onBorderTop = true;
+            }
+            if (point[0] >= MAX_ROW_INDEX){
+                onBorderBottom = true;
+            }
+            if (point[1] <= MIN_COL_INDEX){
+                onBorderLeft = true;
+            }
+            if (point[1] >= MAX_COL_INDEX){
+                onBorderRight = true;
+            }
+        }
+    }
+
+    // finds right key press and runs that code
+    switch (event.key){
+        case "ArrowDown":
+            // code for "down arrow" key press.
+            if (!onBorderBottom){
+                point[0] = point[0] + 1;
+                onBorderTop = false;
+                for (let i = 0; i < 9; i++){
+                    for (let j = 0; j < 9; j++){
+                        if (cells[i][j].className == "cellFilledAndSelected"){
+                            cells[i][j].className = "cellFilled";
+                            cellsPlaceholder[i+1][j].className = "cellSelected";
+                        }
+                        else if (cells[i][j].className == "cellSelected"){
+                            cells[i][j].className = "cell";
+                            cellsPlaceholder[i+1][j].className = "cellSelected";
+                        }
+                    }
+                }
+                placeSelectedCells();
+            }
+            
+        break;
+        case "ArrowUp":
+            // code for "up arrow" key press.
+            if (!onBorderTop){
+                point[0] = point[0] - 1;
+                onBorderBottom = false;
+                for (let i = 0; i < 9; i++){
+                    for (let j = 0; j < 9; j++){
+                        if (cells[i][j].className == "cellFilledAndSelected"){
+                            cells[i][j].className = "cellFilled";
+                            cellsPlaceholder[i-1][j].className = "cellSelected";
+                        }
+                        else if (cells[i][j].className == "cellSelected"){
+                            cells[i][j].className = "cell";
+                            cellsPlaceholder[i-1][j].className = "cellSelected";
+                        }
+                    }
+                }
+                placeSelectedCells();
+            }
+        break;
+        case "ArrowLeft":
+            // code for "left arrow" key press.
+            if (!onBorderLeft){
+                point[1] = point[1] - 1;
+                onBorderRight = false;
+                for (let i = 0; i < 9; i++){
+                    for (let j = 0; j < 9; j++){
+                        if (cells[i][j].className == "cellFilledAndSelected"){
+                            cells[i][j].className = "cellFilled";
+                            cellsPlaceholder[i][j-1].className = "cellSelected";
+                        }
+                        else if (cells[i][j].className == "cellSelected"){
+                            cells[i][j].className = "cell";
+                            cellsPlaceholder[i][j-1].className = "cellSelected";
+                        }
+                    }
+                }
+                placeSelectedCells();
+            }
+        break;
+        case "ArrowRight":
+            // code for "right arrow" key press.
+            if (!onBorderRight){
+                point[1] = point[1] + 1;
+                onBorderLeft = false;
+                for (let i = 0; i < 9; i++){
+                    for (let j = 0; j < 9; j++){
+                        if (cells[i][j].className == "cellFilledAndSelected"){
+                            cells[i][j].className = "cellFilled";
+                            cellsPlaceholder[i][j+1].className = "cellSelected";
+                        }
+                        else if (cells[i][j].className == "cellSelected"){
+                            cells[i][j].className = "cell";
+                            cellsPlaceholder[i][j+1].className = "cellSelected";
+                        }
+                    }
+                }
+                placeSelectedCells();
+            }
+        break;
+        case "Enter":
+            // code for "enter" key press.
+
+            // checks for red under the object
+            for (let i = 0; i < cells.length; i++){
+                for (let j = 0; j < cells.length; j++){
+                    if (cells[i][j].className == "cellFilledAndSelected"){
+                        redUnder = true;
+                    }
+                }
+            }
+
+            
+
+            // checks if enter is allowed to be pressed
+            if (thereIsBlue && !redUnder){
+                point = [5,3];
+
+                // sets the selected cells as filled
+                for (let i = 0; i < 9; i++){
+                    for (let j = 0; j < 9; j++){
+                        if (cells[i][j].className == "cellSelected"){
+                            cells[i][j].className = "cellFilled";
+                        }
+                    }
+                }
+            
+                // resets placeholder for check below
+                resetPlaceholder(cellsPlaceholder);
+
+                // resets the chooser
+                if (selectedChooser == 1){
+                    random1 = Math.floor(Math.random() * 8);
+                    fillChooser(chooser1, cells1, randChoices[random1]);
+                }
+                else if (selectedChooser == 2){
+                    random2 = Math.floor(Math.random() * 8);
+                    fillChooser(chooser2, cells2, randChoices[random2]);
+                }
+                else if(selectedChooser == 3){
+                    random3 = Math.floor(Math.random() * 8);
+                    fillChooser(chooser3, cells3, randChoices[random3]);
+                }
+
+                // changes current "score"
+                blocksUsed = blocksUsed + 1;
+                document.querySelector('h2').innerHTML = "Bloks used:" + blocksUsed;
+
+                // changes bool to false
+                thereIsBlue = false;
+            }
+
+            // calls row clear function
+            checkForRowClear();
+            checkForColClear();
+
+            // sets redUnder back to false for a chance to run the next iteration
+            redUnder = false;
+
+        break;
+
+        console.log(point[0] + ", " + point[1]);
+
+        // sets the game view cells that are selected    
+        for (let i = 0; i < 9; i++){
+            for (let j = 0; j < 9; j++){
+                if (cellsPlaceholder[i][j].className == "cellSelected"){
+                    cells[i][j].className = "cellSelected";
+                }
+                else if(cellsPlaceholder[i][j].className != "cellSelected"){
+                    cells[i][j]
+                }
+            }
+        }
+    }
+
+    // sets the placeholder cells to the actual cells
+    function placeSelectedCells(){
+        for (let i = 0; i < 9; i++){
+            for (let j = 0; j < 9; j++){
+                if (cells[i][j].className != "cellFilled"){
+                    if (cellsPlaceholder[i][j].className == "cellSelected"){
+                        cells[i][j].className = "cellSelected";
+                    }
+                    else{
+                        cells[i][j].className = "cell";
+                    }
+                }
+                else{
+                    if (cellsPlaceholder[i][j].className == "cellSelected"){
+                        cells[i][j].className = "cellFilledAndSelected";
+                    }
+                }
+            }
+        }
+
+        resetPlaceholder(cellsPlaceholder);
+    }
+
+    // checking for a row clear
+    function checkForRowClear(){
+        for (let i = 0; i < numRows; i++){
+            if (cells[i][0].className == "cellFilled" && cells[i][1].className == "cellFilled" && cells[i][2].className == "cellFilled" && cells[i][3].className == "cellFilled" && cells[i][4].className == "cellFilled" && cells[i][5].className == "cellFilled" && cells[i][6].className == "cellFilled" && cells[i][7].className == "cellFilled" && cells[i][8].className == "cellFilled"){
+                for (let j = 0; j < numCols; j++){
+                    cells[i][j].className = "cell";
+                }
+            }
+        }
+    }
+
+    // checking for a column clear
+    function checkForColClear(){
+        for (let j = 0; j < numCols; j++){
+            if (cells[0][j].className == "cellFilled" && cells[1][j].className == "cellFilled" && cells[2][j].className == "cellFilled" && cells[3][j].className == "cellFilled" && cells[4][j].className == "cellFilled" && cells[5][j].className == "cellFilled" && cells[6][j].className == "cellFilled" && cells[7][j].className == "cellFilled" && cells[8][j].className == "cellFilled"){
+                for (let i = 0; i < numCols; i++){
+                    cells[i][j].className = "cell";
+                }
+            }
+        }
+    }
+
+    // cancel default actioin to avoid it being handled twice
+    event.preventDefault();
+}, true);
+
+
+
+
+// double checks that mouseIsDown is set to false when released
+window.onmouseup = (e) => {
+    e.preventDefault();
+    mouseIsDown = false;
+};
+
+</script>
+</body>
+</html>

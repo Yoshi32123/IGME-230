@@ -1,0 +1,28 @@
+WEB APPS 1 REVIEW ANSWERS
+1)  A web app is a clent-server computer program in which the client runs in a web browser.
+2)  The Web Layout Engine, The JavaScript Engine, and Web Browser APIs.
+3)  Canvas for drawing and animation, Document Object Model for contents and style, Fetch and XMLHttpRequest for getting resources, Web Audio for sound effects, and Web Storage for storing key/value pairs of data. 
+4)  The best way to go about web apps is that they take advantage of the latest browser features, but don't leave users of more recent browsers behind. New features can be adopted long after web standards bodies have approved them.  Otherwise some vendors will implement experimental features.
+5)  Standards bodies are in charge of web standards.
+6)  -https://html.spec.whatwg.org/multipage/
+    -https://www.w3.org/html/
+    -https://www.ecma-international.org/ecma-262/
+
+WEB APPS 2 REVIEW ANSWERS
+1)  JavaScript was originally created by Brendan Eich of Netscape Communication in 1995
+2)  Standard name is ECMAScript. European Computer Manufacturers Association
+3)  We will be covering ECMAScript 5 (aka ES5), and the latest version (ES6)
+4)  Right click and then choose Inspect. The choose the Console tab.
+5)  For variable declaration, the keyword is: let
+6)  For constant declaration, the keyword is: const
+7)  Uncaught TypeError: Assignment to constant variable
+8)  A constant is a value that cannot be altered by the program during normal execution. It cannot change through re-assignment, and it can't be redeclared.
+9)  number, string, boolean, undefined, and null
+10) Integer, UInteger, Long, Decimal, Short
+11) True
+12) sum.toFixed(2) turns a number into a number with 2 decimal places.
+13) let pie = "3.14"; pie = pie.toFixed(2);
+14) NaN stands for a numeric data type value representing an undefined value.
+15) Dividing by zero
+16) Eliminates silent errors by changing them to throw errors, and fixes mistakes that make it difficult for engines to perform optimizations.
+17) iii, iv, v, vi, vii

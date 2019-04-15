@@ -1,0 +1,13 @@
+1)  False. javascript arrays are NOT constained to hoding only one type of value.
+2)  ADDING: array.push(); for end, array.shift(); for front
+3)  REMOVING: array.pop(); for end of array, array.shift(); for front
+4)  array.splice(position, numberToRemove);
+5)  - for loop: for (let i = 0; i < array.length; i++)
+    - for...of loop: for (let object of array)
+    - Array.forEach() loop: array.forEach(function(item, index, array))
+6)  array.filter() creates a new array.
+7)  A Nodelist is returned by document.querySelectorAll(*);. A nodelist is an "array-like" object
+8)  function decimalNumber(){
+    return Math.random().toFixed(2);
+}
+9)  Fluent interfaces are software interfaces that read like ordinary written language.

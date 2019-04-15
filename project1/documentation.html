@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Project One Documentation</title>
+    <link href="css/myCSSfile.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<section id = "content"> 
+    
+    <nav>
+        <ul id="navList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="proposal.html">Proposal</a></li>
+            <li id="current"><a href="documentation.html">Documentation</a></li>
+            <li><a href="../../project4/game.html">Game</a></li>
+        </ul>
+    </nav>
+    
+    <h1>Documentation</h1>
+    
+    <h4 class="subtitle">Overall Process:</h4>
+    <p>Initial Design</p>
+    <ul>
+        <li>Trying to figure out how to "fill" bloks was the first milestone. Using css classes, it made it very easy to implement.</li>
+        <li>Implementing a "dragging" interface seemed too much work since the bloks were not pictures. Instead, it was changed to a move and place.</li>
+    </ul>
+    <p>Errors that were overcame</p>
+    <ul>
+        <li>When moving the blok right or down, it would delete a portion of the blok. To fix this, a placement array was made before implementing the move.</li>
+        <li>When moving to edge of the screen, it would cause indexing errors. To fix this, a min/max index was created/set based on the selected blok.</li>
+        <li>Hovering over a filled cell with a selected cell would delete the filled cell. To fix this, a "filled and selected" class was made.</li>
+    </ul>
+    
+    <h4 class="subtitle">Resources:</h4>
+    <ul>
+        <li>Game of Life exercise: <a href="../12 - extra credit/pixel-life.html">Life</a></li>
+        <li>PIXI artist exercise: <a href="../12 - extra credit/pixel-artist.html">Artist</a></li>
+    </ul>
+    
+    <h4 class="subtitle">Notes:</h4>
+    <p>This project was a lot of fun to make (and to play).</p>
+    <p>The coding process was slightly expansive compared to other projects, but I couldn't keep myself away from it.</p>
+    <p>I hope you enjoy playing it as much as everyone else!</p>
+    
+</section>
+</body>

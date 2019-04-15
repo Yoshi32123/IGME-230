@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Transition Demo</title>
+    <style>
+        #circle {
+            width: 100px;
+            height: 100px;
+            background-color: magenta;
+            border-radius: 50px;
+            transition: width 2s ease-in 1s, background-color 1s
+        }
+        
+        #circle:hover {
+            width: 300px;
+            background-color: cyan;
+        }
+
+        #menu {
+            background-color: grey;
+            display: inline-block;
+            padding: 10px;
+            height: 1em;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        
+        #menu:hover {
+            height: 6em;
+        }
+    </style>
+</head>
+<body>
+<div id="circle"></div>
+    
+<div id="menu">
+Games
+<ul>
+    <li>Terraforming Mars</li>
+    <li>Settlers of Catan</li>
+    <li>Pandemic</li>
+</ul>
+    
+</div>
+</body>
+</html>

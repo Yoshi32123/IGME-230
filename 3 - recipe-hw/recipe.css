@@ -1,0 +1,55 @@
+body {
+    font-family: "trebuchet ms", tahoma, verdana;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 1px solid gray;
+    border-style: groove;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: burlywood;
+    cursor: crosshair;
+}
+
+body h1{
+    background-color: lightgray;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+}
+
+a:hover{
+    color:limegreen;
+}
+
+body h2{
+    text-decoration: underline;
+    text-decoration-color: darkviolet;
+}
+
+.ingredients{
+    background-color: lightgrey;
+    width: 250px;
+    list-style-type: circle;
+    padding-left: 2.5em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    box-shadow: 5px 7px;
+}
+
+img {
+    float: right;
+    clear: both;
+}
+
+li{
+    padding-top: 0.5em;
+}
+
+.important{
+    color: red;
+    font-weight: bold;
+    font-size: 14;
+    background-color: yellow;
+    
+}

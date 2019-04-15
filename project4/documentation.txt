@@ -1,0 +1,22 @@
+What went right:
+    The implementation of the grids of bloks worked nicely. 
+    The three "chooser" grids were perfectly created and worked just as planned from the beginning. 
+    Swapping from "dragging" to just moving and placing worked much better and was much easier to implement.
+    All of the bool checks being used work just as planned.
+
+What went wrong:
+    At first, cells were being deleted in multiple ways. Hovering over, moving right or down, and hitting the edge of the screen.
+    Instructions was not being displayed properly until the folder location was swapped.
+    Index restrictions was not working for the bloks until close to completing the project.
+
+Future Improvements:
+    An actual click and drag interface would be nice.
+    Adding sounds and music would make for a better interface.
+
+Teammate Contributions:
+    I worked solo on this project. All credit is to me.
+
+What my grade should be:
+    With how much code I wrote for this project and the time I spent on it, I believe my grade should be a 100%.
+    There are no bugs and it works exactly as planned.
+    I even had friends playtest it to make sure it worked as planned, and they found bugs that I then fixed.

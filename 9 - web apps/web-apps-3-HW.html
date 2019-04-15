@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps 3</title>
+	<style>
+		body{border:1px solid gray;}
+		p b{transform: rotate(20deg)}
+	</style>
+</head>
+<body>
+<h1>My Page</h1>
+<h2>Info</h2>
+<h2>Pictures</h2>
+<h2>More Info</h2>
+<p>Blah <b>Blah</b> Blah</p>
+<p>Blah <b>Blah</b> Blah</p>
+<p id="lastParagraph">Blah <b>Blah</b> Blah</p>
+<footer>Copyright &copy; <b>20XX</b></footer>
+<script>
+	"use strict";
+
+	// REVIEW EXERCISE
+	// 1)
+	let h1 = document.querySelector("h1");
+	h1.innerHTML = "My <i>UFO</i> Page";
+	// 2)
+	let h2s = document.querySelectorAll("h2");
+	h2s[0].innerHTML = "My <i>UFO</i> Info:"
+	// 3)
+	h2s[1].innerHTML = "My <i>UFO</i> Pictures:";
+	// 4)
+	h2s[2].innerHTML = "";
+	// 5)
+	let body = document.querySelector("body");
+	body.style.fontFamily = "sans-serif";
+	body.style.color = "#FF2400";
+	// 6)
+	let ps = document.querySelectorAll("p");
+	let firstP = ps[0];
+	firstP.innerHTML = "Report your UFO sightings <a href = http://www.nuforc.org>here</a>."
+	firstP.style.color = "green";
+	firstP.style.fontWeight = "bold";
+	firstP.style.fontSize = "2em";
+	firstP.style.textTransform = "uppercase";
+	firstP.style.textShadow = "3px 2px #a44";
+	// 7)
+	let secondP = ps[1];
+	secondP.innerHTML = "";
+	// 8)
+	let thirdP = ps[2];
+	thirdP.innerHTML = "<img src='ufo.jpg' alt='UFO'>"
+	// 9)
+	let footer = document.querySelector("footer");
+	footer.innerHTML = "Copyright &copy 2018, Kyler McQuillan";
+
+	console.log(0 == false ? "0 is false" : "0 is true");
+	console.log(-0 == false ? "-0 is false" : "-0 is true");
+	console.log(false == false ? "false is false" : "false is true");
+	console.log(null == false ? "null is false" : "null is true");
+	console.log(undefined == false ? "NaN is false" : "NaN is true");
+	console.log("" == false ? "\"\" is false" : "\"\" is true");
+	console.log('' == false ? "\'\' is false" : "\'\' is true");
+	console.log(new Boolean(false) == false ? "\"new Boolean(false)\" is false" : "\"new Boolean(false)\" is true");	
+
+	</script>
+
+	
+</body>
+</html>
